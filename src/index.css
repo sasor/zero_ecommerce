@@ -1,0 +1,56 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body,
+#root {
+    height: 100vh;
+    margin: 0;
+}
+
+body,
+input,
+select,
+textarea {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #ff8000;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: 5rem 1fr 5rem;
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    grid-area: header;
+    background-color: #203040;
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: footer;
+    background-color: #203040;
+    color: #ffffff;
+}
