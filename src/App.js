@@ -9,7 +9,7 @@ class App extends Component {
 
   state = {
     products: [],
-    cartItems: [],
+    cartItems: JSON.parse(localStorage.getItem("cartItems") || []),
     size: "",
     sort: ""
   };
@@ -22,7 +22,8 @@ class App extends Component {
     const items = this.state.cartItems.filter(item => item._id !== product._id);
     this.setState({
       cartItems: items
-    })
+    }, _ => console.log(`Removing item from cart`))
+    localStorage.setItem("cartItems", JSON.stringify(items));
   }
 
   addToCartAction = (product) => {
@@ -39,7 +40,8 @@ class App extends Component {
     }
     this.setState({
       cartItems: items
-    }, _ => console.log(this.state))
+    }, _ => console.log(`Adding item to cart`))
+    localStorage.setItem("cartItems", JSON.stringify(items));
   }
 
   filterAction = (e) => {
