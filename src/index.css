@@ -115,16 +115,16 @@ footer {
     flex: 1;
 }
 
-.product-price .button {
+.button {
     padding: 1rem;
     border: 0.1rem #c0c0c0 solid;
     background-color: #f0f0f0;
     cursor: pointer;
 }
-.product-price .button:hover {
+.button:hover {
     border: 0.1rem #808080 solid;
 }
-.product-price .button.primary {
+.button.primary {
     background-color: #f0c040;
 }
 
@@ -142,5 +142,58 @@ footer {
 }
 
 .filter div {
+    flex: 1;
+}
+
+/* Cart Component */
+
+.cart {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.cart-header {
+    border-bottom: 0.1rem #c0c0c0 solid;
+}
+
+.cart-items {
+    width: 100%;
+}
+
+.cart-items img {
+    max-width: 5rem;
+}
+
+.cart-items li {
+    display: flex;
+}
+
+.cart-items li div {
+    padding: 0.5rem;
+}
+
+.cart-items li div:last-child {
+    flex: 1;
+}
+
+.right {
+    text-align: right;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.total div {
+    font-size: 2rem;
+}
+
+.total div,
+.total button {
     flex: 1;
 }
