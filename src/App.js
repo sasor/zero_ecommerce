@@ -18,6 +18,10 @@ class App extends Component {
     this.setState({ products: data.products })
   }
 
+  createOrderAction = order => {
+    console.log(order);
+  }
+
   removeFromCartAction = (product) => {
     const items = this.state.cartItems.filter(item => item._id !== product._id);
     this.setState({
@@ -104,7 +108,10 @@ class App extends Component {
               <Products products={products} addToCart={this.addToCartAction} />
             </div>
             <div className="sidebar">
-              <Cart items={cartItems} removeFromCart={this.removeFromCartAction} />
+              <Cart
+                items={cartItems}
+                removeFromCart={this.removeFromCartAction}
+                createOrder={this.createOrderAction} />
             </div>
           </div>
         </main>
