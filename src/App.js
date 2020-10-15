@@ -9,7 +9,7 @@ class App extends Component {
 
   state = {
     products: [],
-    cartItems: JSON.parse(localStorage.getItem("cartItems") || []),
+    cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
     size: "",
     sort: ""
   };
