@@ -35,17 +35,17 @@ class Products extends Component {
 
   render() {
     const { product } = this.state;
-    const { products, addToCart, productos } = this.props;
+    const { products, addToCart } = this.props;
     return (
       <div>
         <Fade bottom cascade>
           {
-            !productos // esto viene desde el backend, osea ta usando el fetchProducts action
+            !products // esto viene desde el backend, osea ta usando el fetchProducts action
               ? <span>...cargando</span>
               : (
                 <ul className="products">
                   {
-                    productos.map(product => {
+                    products.map(product => {
                       return (
                         <li key={product._id}>
                           <div className="product">
@@ -101,7 +101,9 @@ class Products extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { productos: state.products.items }
+  return {
+    products: state.products.filtered,
+  }
 }
 
 export default connect(mapStateToProps, { fetchProducts })(Products);
