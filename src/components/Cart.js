@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import formatCurrency from '../util';
 import Fade from 'react-reveal/Fade';
+import { connect } from 'react-redux';
+import { removeFromCart } from '../store/cart/actions';
 
 class Cart extends Component {
 
@@ -28,15 +30,15 @@ class Cart extends Component {
       name: this.state.name,
       email: this.state.email,
       address: this.state.address,
-      cartItems: this.props.items
+      cartItems: this.props.cartItems
     };
     this.props.createOrder(order);
   }
 
   render() {
     const { showCheckout } = this.state;
-    const { items, removeFromCart } = this.props;
-    const total = items.reduce((acc, item) => {
+    const { cartItems, removeFromCart } = this.props;
+    const total = cartItems.reduce((acc, item) => {
       return item.price * item.count + acc
     }, 0);
 
@@ -44,9 +46,9 @@ class Cart extends Component {
       <div>
         <div className="cart cart-header">
           {
-            items.length === 0
+            cartItems.length === 0
               ? `Cart is empty`
-              : `You have ${items.length} items in the cart `
+              : `You have ${cartItems.length} items in the cart `
           }
         </div>
         <div>
@@ -54,7 +56,7 @@ class Cart extends Component {
             <Fade left cascade>
               <ul className="cart-items">
                 {
-                  items.map(item => (
+                  cartItems.map(item => (
                     <li key={item._id}>
                       <div>
                         <img src={item.image} alt={item.title} />
@@ -73,7 +75,7 @@ class Cart extends Component {
             </Fade>
           </div>
           {
-            items.length > 0 && (
+            cartItems.length > 0 && (
               <div className="cart">
                 <div className="total">
                   <div>
@@ -119,4 +121,10 @@ class Cart extends Component {
 
 }
 
-export default Cart;
+const mapStateToProps = state => {
+  return {
+    cartItems: state.cart.cartItems
+  }
+}
+
+export default connect(mapStateToProps, { removeFromCart })(Cart);
