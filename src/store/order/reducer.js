@@ -8,7 +8,6 @@ export const orderReducer = (state = {}, action) => {
         case CLEAR_ORDER: {
             return { order: null };
         }
-        case CLEAR_CART: { }
         default: {
             return state;
         }
