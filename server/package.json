@@ -1,0 +1,16 @@
+{
+  "name": "zero_ecommerce_back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "engines": {
+    "node": "12.18.3"
+  }
+}
