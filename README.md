@@ -16,5 +16,5 @@ Backend code is located in server directory
 
 - Lines
   - yarn build
-  - copy build/ in server directory
+  - copy the output directory ```build/``` in the ```server/``` directory
   - under server directory run yarn start for running locally

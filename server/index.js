@@ -4,6 +4,10 @@ const Express = require('express');
 const { join } = require('path');
 const { connect, connection, model, Schema } = require('mongoose');
 const App = Express();
+
+const MONGO_URI = process.env.MONGO_URI;
+const MONGO_DB = process.env.MONGO_DB;
+
 const ProductSchema = new Schema({
 
     title: {
@@ -144,8 +148,8 @@ App.use((err, req, res, next) => {
     });
 });
 
-connect('mongodb://localhost', {
-    dbName: 'zero_ecommerce',
+connect(MONGO_URI, {
+    dbName: MONGO_DB,
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
