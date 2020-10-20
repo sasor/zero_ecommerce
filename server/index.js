@@ -3,6 +3,7 @@
 const Express = require('express');
 const { join } = require('path');
 const { connect, connection, model, Schema } = require('mongoose');
+const DATA = require('./data.json');
 const App = Express();
 
 const MONGO_URI = process.env.MONGO_URI;
@@ -146,6 +147,37 @@ App.use((err, req, res, next) => {
             message: err.message
         }
     });
+});
+
+App.get('/api/seeder', async (req, res, next) => {
+    const { products } = DATA;
+    products.forEach((product, index) => {
+        delete product._id;
+    });
+    // TIP:https://masteringjs.io/tutorials/mongoose/create
+    try {
+        const docs = await Product.create(products);
+        res.json({
+            success: true,
+            payload: docs
+        });
+    } catch (error) {
+        next(error);
+    }
+
+});
+
+App.get('/api/seeder/clear', async (req, res, next) => {
+    // DO: this remove all docs in products collection
+    try {
+        const deleted = await Product.deleteMany({});
+        res.json({
+            success: true,
+            payload: deleted
+        });
+    } catch (error) {
+        next(error);
+    }
 });
 
 connect(MONGO_URI, {
